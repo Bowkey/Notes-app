@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes Taking App</title>
+  <script type="module" src="script.js"></script>
+  <script type="module" src="controls.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container" id="security-box">
+    <!-- Little security -->
+    <label for="pass-input">Enter Passcode</label>
+    <input type="number" id="pass-input" name="pass" min="4" max="6" step="1" placeholder="Input password to continue">
+    <button id="pass-btn">Open App</button>
+  </div>
+
+
+  <main class="container" >
+    <p class="eyebrow">Note App</p>
+    <h1>Your Notes will be stored in <code>MongoDB</code> Database.</h1>
+    <p>
+      This is a Note-Taking APP
+    </p>
+    <div class="demo" id="notes-app" style="display: none" >
+      <p>WHAT WOULD YOU LOVE TO DO?</p>
+
+      <button id="post-btn">Post a Notes</button>
+      <button id="all-notes-btn">Get all Notes</button>
+      <a href="#notes-by-author">
+        <button id="get-note-by-author-name">Get Notes by author name</button></a>
+      <hr>
+      <div id="post-field" style="display: none">
+        <input type="text" id="author-name" placeholder="what's your name?" required>
+        <textarea name="notes-content" id="notes-content" rows="10" required></textarea>
+        <button id="submit-post">Post 💾</button>
+      </div>
+      <!-- This is for all notes retrieval -->
+      <div id="allnotes-field" style="display: none;">
+        <span><b>All Notes</b></span>
+        <div id="all-notes">
+          <div class="notes-container">
+            <div id="notes-container" style="padding: 3px; width: fit-content;">
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- this is for notes retrieval y author -->
+
+      <search id="notes-by-author">
+        notes by author appear here <br>
+        <input type="text" id="input-author" placeholder="Type author name here to fetch all there notes">
+        <button id="search-btn">Search🔍</button>
+
+      </search>
+    </div>
+
+
+
+    </section>
+
+
+
+  </main>
+
+</body>
+
+</html>
