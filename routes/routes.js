@@ -4,7 +4,7 @@ const router = Router();
 
 
 router.get("/", getAllNotes)
-router.get("/:author", getNote)
+router.get("/:title", getNote)
 router.post("/", postNote);
 router.put("/:id", updateNote);
 router.delete("/:id", deletNote);

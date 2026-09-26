@@ -13,10 +13,13 @@ export const getAllNotes = async (req, res)=>{
 }
 //This function Posts a note
 export const postNote = async (req, res)=>{
+
   try {
-    const {author, notesBody} =req.body;
-    const note = await Note.create({author, notesBody})
+    const {title, notesBody} =req.body;
+    const note = await Note.create({title, notesBody})
     res.status(201).json({message:"Notes Created", note});
+    
+
   } catch (error) {
     console.error("Couldn't create a note:", error.message);
     res.status(400).json({ message: error.message });
@@ -32,10 +35,10 @@ export const postNote = async (req, res)=>{
 
 export const getNote = async (req, res) => {
   try {
-    const notes = await Note.find({ author: req.params.author }).sort({ createdAt: -1 });
+    const notes = await Note.find({ title: req.params.title }).sort({ createdAt: -1 });
 
     if (notes.length === 0) {
-      return res.status(404).json({ error: "No notes found for this author" });
+      return res.status(404).json({ error: "No notes found for this title" });
     }
     return res.status(200).json({ message: "Notes fetched successfully", notes });
 

@@ -30,11 +30,11 @@
 
       <button id="post-btn">Post a Notes</button>
       <button id="all-notes-btn">Get all Notes</button>
-      <a href="#notes-by-author">
-        <button id="get-note-by-author-name">Get Notes by author name</button></a>
+      <a href="#notes-by-title">
+        <button id="get-note-by-title-name">Get Notes by title name</button></a>
       <hr>
       <div id="post-field" style="display: none">
-        <input type="text" id="author-name" placeholder="what's your name?" required>
+        <input type="text" id="title-name" placeholder="what's your name?" required>
         <textarea name="notes-content" id="notes-content" rows="10" required></textarea>
         <button id="submit-post">Post 💾</button>
       </div>
@@ -49,11 +49,11 @@
           </div>
         </div>
       </div>
-      <!-- this is for notes retrieval y author -->
+      <!-- this is for notes retrieval y title -->
 
-      <search id="notes-by-author">
-        notes by author appear here <br>
-        <input type="text" id="input-author" placeholder="Type author name here to fetch all there notes">
+      <search id="notes-by-title">
+        notes by title appear here <br>
+        <input type="text" id="input-title" placeholder="Type title name here to fetch all there notes">
         <button id="search-btn">Search🔍</button>
 
       </search>

@@ -1,42 +1,49 @@
 
 const submitBtn = document.getElementById("submit-post");
-const authorInput = document.getElementById("author-name");
+const titleInput = document.getElementById("title-name");
 const notesContent = document.getElementById("notes-content");
 const getAllNotes = document.getElementById("all-notes-btn");
 const notesContainer = document.getElementById("notes-container");
 
-submitBtn.addEventListener("click", async ()=>{
+submitBtn.addEventListener("click", async () => {
   console.log("clicked")
-  const data ={
-    author : authorInput.value.trim(),
+  const data = {
+    title: titleInput.value.trim(),
     notesBody: notesContent.value.trim()
   }
+  if (!data.title || !data.notesBody) {
+    alert("Please enter your name and a note.");
+    return;
+  }
+  if (data.notesBody.length <= 1000) {
 
- if (!data.author || !data.notesBody) {
-   alert("Please enter your name and a note.");
-   return;
- }
+    try {
+      const response = await fetch("/notes",
+        {
+          method: "POST",
 
- try {
-   const response = await fetch("/notes",
-  {method:"POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
 
-  headers:{
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(data)
+        });
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.message || "Unable to create note");
+      }
+      console.log("Successfully submitted", result);
+      titleInput.value = "";
+      notesContent.value = "";
+    } catch (error) {
+      console.error("Unable to submit note:", error.message)
+    }
+  }
 
-});
-   const result = await response.json();
-   if (!response.ok) {
-     throw new Error(result.message || "Unable to create note");
-   }
-   console.log("Successfully submitted", result);
-   authorInput.value = "";
-   notesContent.value = "";
-}catch (error) {
-  console.error("Unable to submit note:", error.message)
- }}
+  else {
+    alert("Text body should not exceed 1000 characters")
+  }
+}
 )
 
 // This button retrieves all notes from the database
@@ -48,7 +55,7 @@ getAllNotes.addEventListener("click", async () => {
     // Mapping through notes and adding a Delete button with a data-id attribute
     notesContainer.innerHTML = allNotes.map(note => `
       <div class="note-item" id="note-${note._id}" style="margin-bottom: 20px; border: 1px solid #ddd; padding: 15px; border-radius: 8px; background: #fff;">
-        <p><strong>Author:</strong> ${note.author}</p>
+        <p><strong>title:</strong> ${note.title}</p>
         <p style=""><strong>Note:</strong> ${note.notesBody}</p>
         <p><small>Created: ${new Date(note.createdAt).toLocaleString()}</small></p>
         <button class="delete-btn" data-id="${note._id}" style="background-color: #ff4d4d; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 4px; margin-top: 10px;">

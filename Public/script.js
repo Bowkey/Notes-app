@@ -3,25 +3,25 @@ const allNotesBtn = document.querySelector("#all-notes-btn");
 const postField = document.querySelector("#post-field");
 const allNotesField= document.querySelector("#allnotes-field");
 const getNotes = document.getElementById("get-note");
-const notesByAuthor = document.getElementById("notes-by-author");
+const notesBytitle = document.getElementById("notes-by-title");
 
-const authorNameSearch = document.getElementById("get-note-by-author-name");
+const titleNameSearch = document.getElementById("get-note-by-title-name");
 
 postBtn.addEventListener("click", ()=>{
   postField.style.display = "block";
   allNotesField.style.display = "none";
-  notesByAuthor.style.display = "none";
+  notesBytitle.style.display = "none";
 })
 allNotesBtn.addEventListener("click", ()=>{
   postField.style.display = "none";
-  notesByAuthor.style.display = "none";
+  notesBytitle.style.display = "none";
   allNotesField.style.display = "block";
 })
 
-authorNameSearch.addEventListener('click', ()=>{
+titleNameSearch.addEventListener('click', ()=>{
   postField.style.display = "none";
   allNotesField.style.display = "none";
-    notesByAuthor.style.display = "block";
+    notesBytitle.style.display = "block";
 
 });
 
