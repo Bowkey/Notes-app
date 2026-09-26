@@ -32,6 +32,7 @@ submitBtn.addEventListener("click", async () => {
       if (!response.ok) {
         throw new Error(result.message || "Unable to create note");
       }
+      alert("Note Saved");
       console.log("Successfully submitted", result);
       titleInput.value = "";
       notesContent.value = "";
